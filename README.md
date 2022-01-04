@@ -7,11 +7,7 @@ Clean Architecture
 
 目录结构
 
-​	src
-​    ├─TodoList.Api
-​    ├─TodoList.Application
-​    ├─TodoList.Domain
-​    └─TodoList.Infrastructure
+![微信截图_20220104223703](https://s2.loli.net/2022/01/04/8rKNAMioDcplZgG.png)
 
 #### 开发工具
 
