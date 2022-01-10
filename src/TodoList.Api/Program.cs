@@ -1,6 +1,10 @@
+using TodoList.Infrastructure.Log;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//≈‰÷√»’÷æ
+builder.ConfigureLog();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
