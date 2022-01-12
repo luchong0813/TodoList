@@ -22,7 +22,8 @@ namespace TodoList.Infrastructure
                     configuration.GetConnectionString("SqlServerConnection"),
                     b => b.MigrationsAssembly(typeof(TodoListDbContext).Assembly.FullName));
             });
-            services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<TodoListDbContext>());
+            //services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<TodoListDbContext>());
+            services.AddScoped<IDomainEventService, DomainEventService>();
 
             return services;
         }
