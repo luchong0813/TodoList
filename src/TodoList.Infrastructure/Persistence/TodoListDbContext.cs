@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,8 +23,8 @@ namespace TodoList.Infrastructure.Persistence
             _DomainEventService = domainEventService;
         }
 
-        public DbSet<Domain.Entities.TodoList> TodoLists { get; set; }
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<Domain.Entities.TodoList> TodoLists => Set<Domain.Entities.TodoList>();
+        public DbSet<TodoItem> TodoItems => Set<TodoItem>();
 
         public async Task<int> SaveChangeSync(CancellationToken cancellationToken)
         {
@@ -65,7 +66,8 @@ namespace TodoList.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
         }
 
         private async Task DispatchEvents(DomainEvent[] events) {
