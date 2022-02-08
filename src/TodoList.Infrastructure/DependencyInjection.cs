@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using TodoList.Application.Common.Interfaces;
 using TodoList.Infrastructure.Persistence;
+using TodoList.Infrastructure.Persistence.Repositories;
 
 namespace TodoList.Infrastructure
 {
@@ -24,6 +25,8 @@ namespace TodoList.Infrastructure
             });
             //services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<TodoListDbContext>());
             services.AddScoped<IDomainEventService, DomainEventService>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
 
             return services;
         }
